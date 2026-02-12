@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Akash's Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Back button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            color: #c4b5fd;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 40px rgba(167, 139, 250, 0.4);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #fff, #a78bfa, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #a78bfa;
+            font-weight: 300;
+        }
+
+        /* Content sections */
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(167, 139, 250, 0.2);
+            border-color: rgba(167, 139, 250, 0.3);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+        }
+
+        .section p {
+            color: #b4b4b4;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        /* Skills grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: rgba(167, 139, 250, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(167, 139, 250, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #a78bfa 0%, transparent 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: #a78bfa;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(167, 139, 250, 0.6);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .timeline-item .date {
+            color: #a78bfa;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: #b4b4b4;
+            line-height: 1.6;
+        }
+
+        /* Contact links */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(167, 139, 250, 0.2);
+            border: 1px solid rgba(167, 139, 250, 0.5);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(167, 139, 250, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(167, 139, 250, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated stars background -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="profile-image">👨‍💻</div>
+            <h1>About Me</h1>
+            <p class="subtitle">Data Quality Engineer & Automation Specialist</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="section">
+            <h2><span class="section-icon">👋</span> Introduction</h2>
+            <p>
+                Hello! I'm Akash, a passionate Data Quality Engineer based in India. I specialize in ensuring data accuracy, 
+                building validation frameworks, and creating automation solutions that drive business value.
+            </p>
+            <p>
+                With a strong foundation in SQL, Python, Power BI, and Databricks, I focus on transforming raw data into 
+                reliable insights that organizations can trust and act upon.
+            </p>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <h2><span class="section-icon">🛠️</span> Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-icon">🐍</div>
+                    <div>Python</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">📊</div>
+                    <div>Power BI</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🗄️</div>
+                    <div>SQL</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">☁️</div>
+                    <div>Databricks</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">✅</div>
+                    <div>Data Quality</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">⚙️</div>
+                    <div>Automation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <h2><span class="section-icon">💼</span> Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Data Quality Associate</h3>
+                    <div class="date">Present</div>
+                    <p>
+                        Leading data validation initiatives, developing automated quality checks, and ensuring 
+                        data integrity across multiple systems and platforms.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Key Projects</h3>
+                    <div class="date">Recent Work</div>
+                    <p>
+                        • RRO Data Validation: Built comprehensive validation logic<br>
+                        • Power BI Migration: Automated report checks and dashboard creation<br>
+                        • NSR Validation: Created source vs target reconciliation framework
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interests -->
+        <div class="section">
+            <h2><span class="section-icon">✨</span> Interests</h2>
+            <p>
+                Beyond data quality, I'm passionate about learning new technologies, building automation solutions, 
+                and exploring innovative ways to solve complex data challenges. I believe in continuous learning 
+                and staying updated with the latest industry trends.
+            </p>
+        </div>
+
+        <!-- Contact -->
+        <div class="section">
+            <h2><span class="section-icon">📧</span> Get in Touch</h2>
+            <p>Feel free to reach out for collaborations, opportunities, or just to connect!</p>
+            <div class="contact-links">
+                <a href="mailto:your.email@example.com" class="contact-link">
+                    ✉️ Email
+                </a>
+                <a href="https://github.com/applecheeseburger" target="_blank" class="contact-link">
+                    🐙 GitHub
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+                    👤 LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate random stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
