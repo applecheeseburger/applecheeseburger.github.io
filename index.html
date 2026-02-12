@@ -1,248 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Akash — Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash's Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-:root{
-  --dark:#0f172a;
-  --dark2:#020617;
-  --accent:#38bdf8;
-  --light:#f8fafc;
-  --text:#1e293b;
-  --muted:#64748b;
-  --card:#ffffff;
-}
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+        /* Animated background stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-html{scroll-behavior:smooth;}
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
 
-body{
-<div class="sidebar">
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-</div>
-}
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
 
-/* NAVBAR */
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
 
-nav{
-  position:fixed;
-  width:100%;
-  background:rgba(2,6,23,.85);
-  backdrop-filter: blur(8px);
-  padding:18px 40px;
-  display:flex;
-  justify-content:space-between;
-  z-index:1000;
-}
+        /* Header with animated name */
+        .header {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:25px;
-  font-size:14px;
-}
+        .name {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 0.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #fff, #a78bfa, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-.logo{
-  font-weight:bold;
-  letter-spacing:1px;
-}
+        .title {
+            font-size: 1.5rem;
+            color: #a78bfa;
+            font-weight: 300;
+            letter-spacing: 0.2rem;
+        }
 
-/* HERO */
+        /* Icon carousel */
+        .icons-carousel {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 0;
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
 
-.hero{
-  background:linear-gradient(120deg,var(--dark),var(--dark2));
-  color:white;
-  padding:160px 20px 140px;
-  text-align:center;
-}
+        .icon-item {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-.hero h1{
-  font-size:52px;
-  margin-bottom:20px;
-}
+        .icon-item:hover {
+            transform: translateY(-10px) scale(1.1);
+            background: rgba(167, 139, 250, 0.3);
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.4);
+        }
 
-.hero p{
-  color:#cbd5f5;
-  font-size:18px;
-  max-width:700px;
-  margin:auto;
-}
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
 
-.btn{
-  margin-top:30px;
-  display:inline-block;
-  padding:12px 28px;
-  background:var(--accent);
-  color:black;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:600;
-}
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
 
-/* SECTIONS */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.2), transparent);
+            transition: left 0.5s;
+        }
 
-section{
-  max-width:900px;
-  margin:auto;
-  padding:80px 20px;
-}
+        .card:hover::before {
+            left: 100%;
+        }
 
-.section-title{
-  font-size:28px;
-  margin-bottom:25px;
-  position:relative;
-}
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(167, 139, 250, 0.3);
+            border-color: rgba(167, 139, 250, 0.5);
+        }
 
-.section-title::after{
-  content:"";
-  width:60px;
-  height:3px;
-  background:var(--accent);
-  position:absolute;
-  bottom:-10px;
-  left:0;
-}
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
 
-/* CARDS */
+        .card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
 
-.card{
-  background:var(--card);
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.06);
-  margin-bottom:20px;
-  transition:0.3s;
-}
+        .card p {
+            color: #b4b4b4;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
 
-.card:hover{
-  transform:translateY(-5px);
-}
+        /* Interactive section */
+        .ask-section {
+            text-align: center;
+            padding: 40px 0;
+        }
 
-/* SKILLS */
+        .ask-section h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #a78bfa;
+        }
 
-.skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
+        .question-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
 
-.skill{
-  background:#e2e8f0;
-  padding:8px 14px;
-  border-radius:20px;
-  font-size:14px;
-}
+        .question-btn {
+            padding: 12px 24px;
+            background: rgba(167, 139, 250, 0.2);
+            border: 1px solid rgba(167, 139, 250, 0.5);
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
 
-/* FOOTER */
+        .question-btn:hover {
+            background: rgba(167, 139, 250, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(167, 139, 250, 0.4);
+        }
 
-footer{
-  background:var(--dark);
-  color:#94a3b8;
-  text-align:center;
-  padding:40px 20px;
-  margin-top:60px;
-}
+        .input-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-footer a{
-  color:var(--accent);
-  text-decoration:none;
-}
-</style>
+        .chat-input {
+            width: 100%;
+            padding: 18px 60px 18px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input:focus {
+            border-color: #a78bfa;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+        }
+
+        .chat-input::placeholder {
+            color: #666;
+        }
+
+        .send-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 5px 20px rgba(167, 139, 250, 0.5);
+        }
+
+        .send-btn::after {
+            content: '→';
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+                letter-spacing: 0.3rem;
+            }
+            
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .question-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Animated stars background -->
+    <div class="stars" id="stars"></div>
 
-<!-- NAV -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="name">A K A S H</h1>
+            <p class="title">Product Engineer</p>
+        </div>
 
-<nav>
-  <div class="logo">AKASH</div>
-  <div>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+        <!-- Icons Carousel -->
+        <div class="icons-carousel">
+            <div class="icon-item" title="Python">🐍</div>
+            <div class="icon-item" title="Power BI">📊</div>
+            <div class="icon-item" title="SQL">🗄️</div>
+            <div class="icon-item" title="Data Quality">✅</div>
+            <div class="icon-item" title="Automation">⚙️</div>
+        </div>
 
-<!-- HERO -->
+        <!-- Cards Grid -->
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">👤</div>
+                <h2>About</h2>
+                <p>A bit about myself.</p>
+            </div>
 
-<section class="hero">
-  <h1>Hi, I'm Akash</h1>
-  <p>
-    Data Quality Associate focused on automation, analytics, and building reliable data validation frameworks.
-  </p>
-  <a href="#projects" class="btn">View Projects</a>
-</section>
+            <div class="card">
+                <div class="card-icon">💼</div>
+                <h2>Work Experience</h2>
+                <p>My career as a Data Quality Engineer.</p>
+            </div>
 
-<!-- ABOUT -->
+            <div class="card">
+                <div class="card-icon">📁</div>
+                <h2>Projects</h2>
+                <p>Personal projects I've been working on.</p>
+            </div>
 
-<section id="about">
-  <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <div class="card-icon">✉️</div>
+                <h2>Contact</h2>
+                <p>Email, LinkedIn, carrier pigeon...</p>
+            </div>
+        </div>
 
-  <div class="card">
-    <p>
-      I specialize in data quality, automation, and analytics solutions. My work focuses on ensuring data accuracy across systems, improving validation frameworks, and building automation pipelines using SQL, Python, Power BI, and Databricks.
-    </p>
-  </div>
-</section>
+        <!-- Ask AkashGPT Section -->
+        <div class="ask-section">
+            <h3>Ask AkashGPT</h3>
+            
+            <div class="question-buttons">
+                <button class="question-btn">Who is Akash?</button>
+                <button class="question-btn">How much experience does he have?</button>
+                <button class="question-btn">Which tools does he use?</button>
+                <button class="question-btn">What are his skills?</button>
+                <button class="question-btn">How can I contact him?</button>
+            </div>
 
-<!-- PROJECTS -->
+            <div class="input-container">
+                <input type="text" class="chat-input" placeholder="What would you like to know?">
+                <button class="send-btn"></button>
+            </div>
+        </div>
+    </div>
 
-<section id="projects">
-  <h2 class="section-title">Projects</h2>
+    <script>
+        // Generate random stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
 
-  <div class="card">
-    <h3>RRO Data Validation</h3>
-    <p>Built validation logic ensuring request data integrity across systems.</p>
-  </div>
+        // Add click handlers for question buttons
+        document.querySelectorAll('.question-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = document.querySelector('.chat-input');
+                input.value = this.textContent;
+                input.focus();
+            });
+        });
 
-  <div class="card">
-    <h3>Power BI Migration Automation</h3>
-    <p>Automated report checks and migrated legacy checks into modern dashboards.</p>
-  </div>
-
-  <div class="card">
-    <h3>NSR Source vs Target Validation</h3>
-    <p>Created reconciliation checks validating data movement between databases and product platforms.</p>
-  </div>
-</section>
-
-<!-- SKILLS -->
-
-<section id="skills">
-  <h2 class="section-title">Skills</h2>
-
-  <div class="skills">
-    <div class="skill">SQL</div>
-    <div class="skill">Power BI</div>
-    <div class="skill">Python</div>
-    <div class="skill">Databricks</div>
-    <div class="skill">Data Quality</div>
-    <div class="skill">Automation</div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-
-<section id="contact">
-  <h2 class="section-title">Contact</h2>
-
-  <div class="card">
-    <p>Email: your-email@example.com</p>
-    <p>GitHub: https://github.com/applecheeseburger</p>
-  </div>
-</section>
-
-<footer>
-  © 2026 Akash — Portfolio
-</footer>
-
+        // Card click interactions
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h2').textContent;
+                if (title === 'About') {
+                    window.location.href = 'about.html';
+                }
+                // Add more navigation as needed
+            });
+        });
+    </script>
 </body>
 </html>
