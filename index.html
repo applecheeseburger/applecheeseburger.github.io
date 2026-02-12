@@ -1,75 +1,245 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Akash Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Akash — Portfolio</title>
 
-        header {
-            background-color: #222;
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
+<style>
+:root{
+  --dark:#0f172a;
+  --dark2:#020617;
+  --accent:#38bdf8;
+  --light:#f8fafc;
+  --text:#1e293b;
+  --muted:#64748b;
+  --card:#ffffff;
+}
 
-        section {
-            padding: 40px;
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        h2 {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-    </style>
+html{scroll-behavior:smooth;}
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background:var(--light);
+  color:var(--text);
+}
+
+/* NAVBAR */
+
+nav{
+  position:fixed;
+  width:100%;
+  background:rgba(2,6,23,.85);
+  backdrop-filter: blur(8px);
+  padding:18px 40px;
+  display:flex;
+  justify-content:space-between;
+  z-index:1000;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:25px;
+  font-size:14px;
+}
+
+.logo{
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+/* HERO */
+
+.hero{
+  background:linear-gradient(120deg,var(--dark),var(--dark2));
+  color:white;
+  padding:160px 20px 140px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:52px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  color:#cbd5f5;
+  font-size:18px;
+  max-width:700px;
+  margin:auto;
+}
+
+.btn{
+  margin-top:30px;
+  display:inline-block;
+  padding:12px 28px;
+  background:var(--accent);
+  color:black;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:600;
+}
+
+/* SECTIONS */
+
+section{
+  max-width:900px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+.section-title{
+  font-size:28px;
+  margin-bottom:25px;
+  position:relative;
+}
+
+.section-title::after{
+  content:"";
+  width:60px;
+  height:3px;
+  background:var(--accent);
+  position:absolute;
+  bottom:-10px;
+  left:0;
+}
+
+/* CARDS */
+
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.06);
+  margin-bottom:20px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* SKILLS */
+
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.skill{
+  background:#e2e8f0;
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+  background:var(--dark);
+  color:#94a3b8;
+  text-align:center;
+  padding:40px 20px;
+  margin-top:60px;
+}
+
+footer a{
+  color:var(--accent);
+  text-decoration:none;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-    <h1>Akash</h1>
-    <p>Data Quality | Automation | Analytics</p>
-</header>
+<!-- NAV -->
 
-<section>
-    <h2>About Me</h2>
+<nav>
+  <div class="logo">AKASH</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <h1>Hi, I'm Akash</h1>
+  <p>
+    Data Quality Associate focused on automation, analytics, and building reliable data validation frameworks.
+  </p>
+  <a href="#projects" class="btn">View Projects</a>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+
+  <div class="card">
     <p>
-        Data Quality Associate with experience in SQL, Power BI, Databricks, and automation projects.
+      I specialize in data quality, automation, and analytics solutions. My work focuses on ensuring data accuracy across systems, improving validation frameworks, and building automation pipelines using SQL, Python, Power BI, and Databricks.
     </p>
+  </div>
 </section>
 
-<section>
-    <h2>Projects</h2>
-    <ul>
-        <li>RRO Data Quality Validation</li>
-        <li>Power BI Migration Automation</li>
-        <li>NSR Source vs Target Validation</li>
-    </ul>
+<!-- PROJECTS -->
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="card">
+    <h3>RRO Data Validation</h3>
+    <p>Built validation logic ensuring request data integrity across systems.</p>
+  </div>
+
+  <div class="card">
+    <h3>Power BI Migration Automation</h3>
+    <p>Automated report checks and migrated legacy checks into modern dashboards.</p>
+  </div>
+
+  <div class="card">
+    <h3>NSR Source vs Target Validation</h3>
+    <p>Created reconciliation checks validating data movement between databases and product platforms.</p>
+  </div>
 </section>
 
-<section>
-    <h2>Skills</h2>
-    <ul>
-        <li>SQL</li>
-        <li>Power BI</li>
-        <li>Python</li>
-        <li>Databricks</li>
-        <li>Data Quality Frameworks</li>
-    </ul>
+<!-- SKILLS -->
+
+<section id="skills">
+  <h2 class="section-title">Skills</h2>
+
+  <div class="skills">
+    <div class="skill">SQL</div>
+    <div class="skill">Power BI</div>
+    <div class="skill">Python</div>
+    <div class="skill">Databricks</div>
+    <div class="skill">Data Quality</div>
+    <div class="skill">Automation</div>
+  </div>
 </section>
 
-<section>
-    <h2>Contact</h2>
+<!-- CONTACT -->
+
+<section id="contact">
+  <h2 class="section-title">Contact</h2>
+
+  <div class="card">
     <p>Email: your-email@example.com</p>
+    <p>GitHub: https://github.com/applecheeseburger</p>
+  </div>
 </section>
+
+<footer>
+  © 2026 Akash — Portfolio
+</footer>
 
 </body>
 </html>
