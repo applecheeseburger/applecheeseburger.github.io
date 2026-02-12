@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akash's Portfolio</title>
+    <title>Akash Ghosh - Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,6 @@
             position: relative;
         }
 
-        /* Animated background stars */
         .stars {
             position: fixed;
             top: 0;
@@ -45,23 +44,21 @@
             50% { opacity: 1; }
         }
 
-        /* Main container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
             position: relative;
             z-index: 1;
         }
 
-        /* Header with animated name */
         .header {
             text-align: center;
-            padding: 60px 0 40px;
+            padding: 50px 0 30px;
         }
 
         .name {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             letter-spacing: 0.5rem;
             margin-bottom: 10px;
@@ -72,57 +69,76 @@
         }
 
         .title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #a78bfa;
             font-weight: 300;
-            letter-spacing: 0.2rem;
+            letter-spacing: 0.15rem;
+            margin-bottom: 15px;
         }
 
-        /* Icon carousel */
+        .download-resume {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(167, 139, 250, 0.3);
+        }
+
+        .download-resume:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(167, 139, 250, 0.5);
+        }
+
         .icons-carousel {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            padding: 40px 0;
+            gap: 15px;
+            padding: 30px 0;
             overflow-x: auto;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .icon-item {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .icon-item:hover {
-            transform: translateY(-10px) scale(1.1);
-            background: rgba(167, 139, 250, 0.3);
-            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.4);
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(167, 139, 250, 0.25);
+            box-shadow: 0 8px 25px rgba(167, 139, 250, 0.4);
         }
 
-        /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin-bottom: 40px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            padding: 22px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
@@ -136,7 +152,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.15), transparent);
             transition: left 0.5s;
         }
 
@@ -145,37 +161,37 @@
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(167, 139, 250, 0.3);
-            border-color: rgba(167, 139, 250, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(167, 139, 250, 0.25);
+            border-color: rgba(167, 139, 250, 0.4);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
         }
 
         .card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
             color: #fff;
         }
 
         .card p {
             color: #b4b4b4;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            line-height: 1.5;
+            font-size: 0.88rem;
         }
 
-        /* Interactive section */
         .ask-section {
             text-align: center;
-            padding: 40px 0;
+            padding: 35px 0;
         }
 
         .ask-section h3 {
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
             color: #a78bfa;
         }
 
@@ -183,49 +199,49 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
         .question-btn {
-            padding: 12px 24px;
-            background: rgba(167, 139, 250, 0.2);
-            border: 1px solid rgba(167, 139, 250, 0.5);
-            border-radius: 25px;
+            padding: 10px 20px;
+            background: rgba(167, 139, 250, 0.15);
+            border: 1px solid rgba(167, 139, 250, 0.4);
+            border-radius: 22px;
             color: #fff;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .question-btn:hover {
-            background: rgba(167, 139, 250, 0.4);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(167, 139, 250, 0.4);
+            background: rgba(167, 139, 250, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(167, 139, 250, 0.3);
         }
 
         .input-container {
-            max-width: 600px;
+            max-width: 580px;
             margin: 0 auto;
             position: relative;
         }
 
         .chat-input {
             width: 100%;
-            padding: 18px 60px 18px 20px;
+            padding: 16px 55px 16px 20px;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 28px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
             transition: all 0.3s ease;
         }
 
         .chat-input:focus {
             border-color: #a78bfa;
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 18px rgba(167, 139, 250, 0.25);
         }
 
         .chat-input::placeholder {
@@ -234,13 +250,13 @@
 
         .send-btn {
             position: absolute;
-            right: 8px;
+            right: 7px;
             top: 50%;
             transform: translateY(-50%);
             background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
             border: none;
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -250,96 +266,103 @@
         }
 
         .send-btn:hover {
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 5px 20px rgba(167, 139, 250, 0.5);
+            transform: translateY(-50%) scale(1.08);
+            box-shadow: 0 4px 18px rgba(167, 139, 250, 0.45);
         }
 
         .send-btn::after {
             content: '→';
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .name {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
                 letter-spacing: 0.3rem;
             }
             
             .title {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
 
             .cards-grid {
                 grid-template-columns: 1fr;
             }
 
-            .question-buttons {
-                flex-direction: column;
-                align-items: center;
+            .icon-item {
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .card h2 {
+                font-size: 1.3rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Animated stars background -->
     <div class="stars" id="stars"></div>
 
     <div class="container">
-        <!-- Header -->
         <div class="header">
-            <h1 class="name">A K A S H</h1>
-            <p class="title">Product Engineer</p>
+            <h1 class="name">A K A S H  G H O S H</h1>
+            <p class="title">Data Quality Engineer</p>
+            <a href="AKASH-GHOSH.docx" download class="download-resume">
+                📎 Download Resume
+            </a>
         </div>
 
-        <!-- Icons Carousel -->
         <div class="icons-carousel">
             <div class="icon-item" title="Python">🐍</div>
             <div class="icon-item" title="Power BI">📊</div>
             <div class="icon-item" title="SQL">🗄️</div>
-            <div class="icon-item" title="Data Quality">✅</div>
+            <div class="icon-item" title="iCEDQ">✅</div>
+            <div class="icon-item" title="Databricks">☁️</div>
             <div class="icon-item" title="Automation">⚙️</div>
         </div>
 
-        <!-- Cards Grid -->
         <div class="cards-grid">
-            <div class="card">
+            <div class="card" onclick="window.location.href='about.html'">
                 <div class="card-icon">👤</div>
                 <h2>About</h2>
-                <p>A bit about myself.</p>
+                <p>8 years in data quality engineering and governance.</p>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="window.location.href='work.html'">
                 <div class="card-icon">💼</div>
                 <h2>Work Experience</h2>
-                <p>My career as a Data Quality Engineer.</p>
+                <p>Data Quality Associate at S&P Global Ratings.</p>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="window.location.href='projects.html'">
                 <div class="card-icon">📁</div>
                 <h2>Projects</h2>
-                <p>Personal projects I've been working on.</p>
+                <p>Enterprise-grade DQ frameworks and automation.</p>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="window.location.href='contact.html'">
                 <div class="card-icon">✉️</div>
                 <h2>Contact</h2>
-                <p>Email, LinkedIn, carrier pigeon...</p>
+                <p>Hyderabad | akashghosh020@gmail.com</p>
             </div>
         </div>
 
-        <!-- Ask AkashGPT Section -->
         <div class="ask-section">
             <h3>Ask AkashGPT</h3>
             
             <div class="question-buttons">
-                <button class="question-btn">Who is Akash?</button>
-                <button class="question-btn">How much experience does he have?</button>
-                <button class="question-btn">Which tools does he use?</button>
-                <button class="question-btn">What are his skills?</button>
-                <button class="question-btn">How can I contact him?</button>
+                <button class="question-btn">What's your experience?</button>
+                <button class="question-btn">Which tools do you use?</button>
+                <button class="question-btn">Tell me about your projects</button>
+                <button class="question-btn">What are your skills?</button>
+                <button class="question-btn">How can I contact you?</button>
             </div>
 
             <div class="input-container">
@@ -350,7 +373,6 @@
     </div>
 
     <script>
-        // Generate random stars
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
@@ -361,23 +383,11 @@
             starsContainer.appendChild(star);
         }
 
-        // Add click handlers for question buttons
         document.querySelectorAll('.question-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const input = document.querySelector('.chat-input');
                 input.value = this.textContent;
                 input.focus();
-            });
-        });
-
-        // Card click interactions
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', function() {
-                const title = this.querySelector('h2').textContent;
-                if (title === 'About') {
-                    window.location.href = 'about.html';
-                }
-                // Add more navigation as needed
             });
         });
     </script>
