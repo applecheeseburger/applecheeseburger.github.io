@@ -1,112 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work Experience - Akash's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Work Experience - Akash's Portfolio</title>
+
 <style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 body {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
-  color: #fff;
-  min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
 }
+
 /* Stars Background */
 .stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
 }
+
 .star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  animation: twinkle 3s infinite;
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
 }
+
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
 }
-/* KEEP ONLY SCALEUP FOR NAME */
+
 @keyframes scaleUp {
-  0% { opacity: 0; transform: scale(0.3); }
-  50% { opacity: 1; transform: scale(1.1); }
-  100% { opacity: 1; transform: scale(1); }
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
 }
-/* Subtitle animation */
+
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
+
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 20px;
-  position: relative;
-  z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 40px;
+    color: #b0b0ff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease;
+}
+
+.back-link:hover {
+    color: #fff;
+    transform: translateX(-5px);
+}
+
+/* ===== HEADER ===== */
+
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 1s ease;
+    transition: all 0.4s ease;
+
+    position: sticky;
+    top: 20px;
+    z-index: 10;
+}
+
+/* Shrink + move right */
+.page-header.shrink {
+    transform: scale(0.6) translateX(108%);
+    transform-origin: top center;
+    opacity: 0.95;
+}
+
+.profile-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: scaleUp 0.8s ease;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #fff, #b0b0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #b0b0ff;
+}
+
+.content-section {
+    margin-bottom: 50px;
+    animation: fadeInUp 1.4s ease;
+}
+
+.content-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #b0b0ff;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(176,176,255,0.3);
+}
+
+.section-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(176,176,255,0.2);
+    border-radius: 12px;
+    padding: 35px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.section-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(176,176,255,0.4);
+    transform: translateY(-3px);
+}
+
+.section-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.company {
+    font-size: 1.1rem;
+    color: #b0b0ff;
+    margin-bottom: 10px;
+}
+
+.company strong {
+    color: #fff;
+}
+
+.time-period {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.section-card p {
+    color: #d0d0d0;
+    line-height: 1.8;
+}
+
+.section-card ul {
+    list-style: none;
+}
+
+.section-card li {
+    color: #d0d0d0;
+    padding: 12px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.section-card li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #b0b0ff;
+    font-weight: bold;
+}
+
+@media (max-width:768px) {
+    .page-header.shrink {
+        transform: scale(0.7) translateX(20%);
+    }
 }
 </style>
-<div class="stars" id="stars"></div>
-<script>
-/* Stars */
-const starsContainer = document.getElementById('stars');
-for (let i = 0; i < 100; i++) {
-  const star = document.createElement('div');
-  star.className = 'star';
-  star.style.left = Math.random() * 100 + '%';
-  star.style.top = Math.random() * 100 + '%';
-  star.style.animationDelay = Math.random() * 3 + 's';
-  starsContainer.appendChild(star);
-}
-</script>
-
+</head>
 
 <body>
-    <div class="container">
-        <a href="/index.html" class="back-link">← Back to Home</a>
-        
-        <section class="page-header">
-            <div class="profile-icon">💼</div>
-            <h1>Work Experience</h1>
-            <p class="subtitle">Data Quality Associate at S&P Global Ratings</p>
-        </section>
 
-        <section class="content-section">
-            <div class="section-card">
-                <h2>💼 Data Quality Associate</h2>
-                <p class="company"><strong>S&P Global Ratings</strong></p>
-                <p class="time-period">Present</p>
-                <p>Leading data validation initiatives, developing automated quality checks, and ensuring data integrity across multiple systems and platforms.</p>
-            </div>
-        </section>
+<div class="stars" id="stars"></div>
 
-        <section class="content-section">
-            <h3>Key Responsibilities</h3>
-            <div class="section-card">
-                <ul>
-                    <li>Design and implement data validation frameworks</li>
-                    <li>Develop automated quality checks and monitoring systems</li>
-                    <li>Ensure data integrity across multiple platforms</li>
-                    <li>Create comprehensive testing and validation documentation</li>
-                    <li>Lead data quality initiatives and drive best practices</li>
-                </ul>
-            </div>
-        </section>
-    </div>
+<div class="container">
+    <a href="/index.html" class="back-link">← Back to Home</a>
+
+    <section class="page-header">
+        <div class="profile-icon">💼</div>
+        <h1>Work Experience</h1>
+        <p class="subtitle">Data Quality Associate at S&P Global Ratings</p>
+    </section>
+
+    <section class="content-section">
+        <div class="section-card">
+            <h2>💼 Data Quality Associate</h2>
+            <p class="company"><strong>S&P Global Ratings</strong></p>
+            <p class="time-period">Present</p>
+            <p>
+                Leading data validation initiatives, developing automated quality checks, and ensuring data integrity across multiple systems and platforms.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h3>Key Responsibilities</h3>
+        <div class="section-card">
+            <ul>
+                <li>Design and implement data validation frameworks</li>
+                <li>Develop automated quality checks and monitoring systems</li>
+                <li>Ensure data integrity across multiple platforms</li>
+                <li>Create comprehensive testing and validation documentation</li>
+                <li>Lead data quality initiatives and drive best practices</li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<script>
+/* Generate Stars */
+const starsContainer = document.getElementById('stars');
+
+for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    starsContainer.appendChild(star);
+}
+
+/* Scroll Shrink Animation */
+const pageHeader = document.querySelector('.page-header');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+        pageHeader.classList.add('shrink');
+    } else {
+        pageHeader.classList.remove('shrink');
+    }
+});
+</script>
+
 </body>
 </html>
