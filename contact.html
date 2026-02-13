@@ -4,37 +4,347 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Akash's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+        }
+
+        /* ================= Stars ================= */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%,100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ================= Navigation ================= */
+        .sidebar {
+            position: fixed;
+            left: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            z-index: 100;
+        }
+
+        .nav-item {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(14px);
+            transition: 0.35s ease;
+        }
+
+        .nav-icon {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: #cfd2ff;
+            stroke-width: 1.7;
+            transition: 0.3s ease;
+        }
+
+        /* Hover */
+        .nav-item:hover {
+            transform: scale(1.25);
+            background: rgba(176,176,255,0.18);
+        }
+
+        .nav-item:hover .nav-icon {
+            stroke: white;
+        }
+
+        /* Active page */
+        .nav-item.active {
+            transform: scale(1.35);
+            background: rgba(176,176,255,0.25);
+            box-shadow: 0 0 35px rgba(176,176,255,0.8);
+            animation: pulseGlow 2.5s infinite;
+        }
+
+        .nav-item.active::before {
+            content: "";
+            position: absolute;
+            left: -16px;
+            width: 5px;
+            height: 60%;
+            border-radius: 10px;
+            background: linear-gradient(to bottom, transparent, #b0b0ff, transparent);
+        }
+
+        /* Tooltip */
+        .nav-item::after {
+            content: attr(data-label);
+            position: absolute;
+            left: 90px;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            color: #b0b0ff;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: 0.3s;
+        }
+
+        .nav-item:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Pulse Animation */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 20px rgba(176,176,255,0.4); }
+            50% { box-shadow: 0 0 45px rgba(176,176,255,0.9); }
+            100% { box-shadow: 0 0 20px rgba(176,176,255,0.4); }
+        }
+
+        /* ================= Main Content ================= */
+        .main-content {
+            flex: 1;
+            margin-left: 140px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 30px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .profile-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: scaleUp 0.8s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, #b0b0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #b0b0ff;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(176,176,255,0.2);
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(176,176,255,0.5);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .contact-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #b0b0ff;
+        }
+
+        .contact-card p {
+            color: #d0d0d0;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-link {
+            background: rgba(176,176,255,0.15);
+            color: #b0b0ff;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(176,176,255,0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-link:hover {
+            background: rgba(176,176,255,0.3);
+            border-color: rgba(176,176,255,0.6);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes scaleUp {
+            0% { transform: scale(0.3); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <a href="/index.html" class="back-link">← Back to Home</a>
-        
-        <section class="page-header">
-            <div class="profile-icon">✏️</div>
-            <h1>Contact</h1>
-            <p class="subtitle">Get in Touch</p>
-        </section>
+    <div class="stars" id="stars"></div>
 
-        <section class="content-section">
-            <h2>Contact Information</h2>
-            <div class="section-card">
-                <p><strong>📬 Email:</strong> akashghosh020@gmail.com</p>
-                <p><strong>📍 Location:</strong> Hyderabad, India</p>
+    <!-- Navigation -->
+    <aside class="sidebar">
+        <div class="nav-item" data-label="Home">
+            <a href="/index.html">
+                <svg viewBox="0 0 24 24" class="nav-icon"><path d="M3 11L12 3L21 11V21H15V15H9V21H3Z"/></svg>
+            </a>
+        </div>
+        <div class="nav-item" data-label="About">
+            <a href="/about.html">
+                <svg viewBox="0 0 24 24" class="nav-icon"><circle cx="12" cy="8" r="4"/><path d="M4 21C4 16.5 8 14 12 14C16 14 20 16.5 20 21"/></svg>
+            </a>
+        </div>
+        <div class="nav-item" data-label="Projects">
+            <a href="/projects.html">
+                <svg viewBox="0 0 24 24" class="nav-icon"><rect x="3" y="4" width="7" height="7"/><rect x="14" y="4" width="7" height="7"/><rect x="14" y="15" width="7" height="7"/><rect x="3" y="15" width="7" height="7"/></svg>
+            </a>
+        </div>
+        <div class="nav-item" data-label="Work">
+            <a href="/work.html">
+                <svg viewBox="0 0 24 24" class="nav-icon"><rect x="2" y="7" width="20" height="14"/><path d="M16 7V5C16 3.9 15.1 3 14 3H10C8.9 3 8 3.9 8 5V7"/></svg>
+            </a>
+        </div>
+        <div class="nav-item active" data-label="Contact">
+            <a href="/contact.html">
+                <svg viewBox="0 0 24 24" class="nav-icon"><path d="M3 5H21V19H3Z"/><path d="M3 5L12 13L21 5"/></svg>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Content -->
+    <div class="main-content">
+        <div class="container">
+            <section class="page-header">
+                <div class="profile-icon">✉️</div>
+                <h1>Get In Touch</h1>
+                <p class="subtitle">Let's connect and build something amazing</p>
+            </section>
+
+            <div class="contact-card">
+                <h2>Reach Out</h2>
+                <p>I'm always open to new opportunities and interesting conversations. Whether you have a project in mind, want to collaborate, or just want to say hello, feel free to get in touch!</p>
+                <div class="contact-links">
+                    <a href="mailto:akash@example.com" class="contact-link">
+                        <span>📧 Email</span>
+                    </a>
+                    <a href="https://linkedin.com" class="contact-link" target="_blank">
+                        <span>💼 LinkedIn</span>
+                    </a>
+                    <a href="https://github.com" class="contact-link" target="_blank">
+                        <span>🐙 GitHub</span>
+                    </a>
+                </div>
             </div>
-        </section>
 
-        <section class="content-section">
-            <h3>🚀 Let's Connect</h3>
-            <div class="section-card">
-                <p>Feel free to reach out for collaborations, opportunities, or just to connect!</p>
-                <ul>
-                    <li><a href="mailto:akashghosh020@gmail.com">📧 Email Me</a></li>
-                    <li><a href="https://github.com/applecheeseburger" target="_blank">👀 GitHub</a></li>
-                    <li><a href="https://linkedin.com" target="_blank">👥 LinkedIn</a></li>
+            <div class="contact-card">
+                <h2>Contact Information</h2>
+                <p><strong>Email:</strong> akash@example.com</p>
+                <p><strong>Location:</strong> Kolkata, India</p>
+                <p><strong>Available:</strong> For freelance projects and full-time opportunities</p>
+            </div>
+
+            <div class="contact-card">
+                <h2>Let's Collaborate</h2>
+                <p>I'm interested in opportunities related to:</p>
+                <ul style="list-style: none; margin-top: 15px;">
+                    <li style="color: #d0d0d0; padding: 8px 0; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #b0b0ff;">→</span>
+                        Data Quality Assurance Projects
+                    </li>
+                    <li style="color: #d0d0d0; padding: 8px 0; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #b0b0ff;">→</span>
+                        Automation & Process Optimization
+                    </li>
+                    <li style="color: #d0d0d0; padding: 8px 0; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #b0b0ff;">→</span>
+                        Data Analytics & Reporting
+                    </li>
+                    <li style="color: #d0d0d0; padding: 8px 0; padding-left: 20px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #b0b0ff;">→</span>
+                        Consulting on Data Governance
+                    </li>
                 </ul>
             </div>
-        </section>
+        </div>
     </div>
+
+    <script>
+        /* Generate Stars */
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        /* Active Page Highlight */
+        const links = document.querySelectorAll(".nav-item a");
+        links.forEach(link => {
+            if (link.href === window.location.href) {
+                link.parentElement.classList.add("active");
+            }
+        });
+    </script>
 </body>
 </html>
