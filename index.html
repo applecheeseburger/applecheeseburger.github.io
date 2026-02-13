@@ -44,6 +44,11 @@
             50% { opacity: 1; }
         }
 
+         @keyframes fadeInUp {
+               from { opacity: 0; transform: translateY(30px); }
+               to { opacity: 1; transform: translateY(0); }
+              }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -60,12 +65,13 @@
         .name {
             font-size: 3.5rem;
             font-weight: 700;
-            letter-spacing: 0.5rem;
+            letter-spacing: 0.2rem;
             margin-bottom: 10px;
             background: linear-gradient(90deg, #fff, #a78bfa, #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+             animation: fadeInUp 0.8s ease-out;
         }
 
         .title {
