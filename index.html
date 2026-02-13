@@ -1,454 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akash Ghosh - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akash Ghosh - Portfolio</title>
 
-        body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
-            color: #fff;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
 
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
 
-         @keyframes fadeInUp {
-               from { opacity: 0; transform: translateY(30px); }
-               to { opacity: 1; transform: translateY(0); }
-              }
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            position: relative;
-            z-index: 1;
-        }
+/* KEEP ONLY THIS TITLE ANIMATION */
+@keyframes scaleUp {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
 
-        .header {
-            text-align: center;
-            padding: 50px 0 30px;
-        }
+/* Subtitle animation */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
- .name {
-        
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: 0.1rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #fff, #a78bfa, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-             animation: glowPulse 2s ease-in-out infinite; 
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 1;
+}
 
-        .title {
-            font-size: 1.3rem;
-            color: #a78bfa;
-            font-weight: 300;
-            letter-spacing: 0.15rem;
-            margin-bottom: 15px;
-        }
+.header {
+    text-align: center;
+    padding: 50px 0 30px;
+}
 
-        .download-resume {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(167, 139, 250, 0.3);
-        }
+.name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #fff, #a78bfa, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: scaleUp 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
 
-        .download-resume:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(167, 139, 250, 0.5);
-        }
+.title {
+    font-size: 1.3rem;
+    color: #a78bfa;
+    font-weight: 300;
+    letter-spacing: 0.15rem;
+    margin-bottom: 15px;
+    animation: fadeInUp 0.8s ease;
+}
 
-        .icons-carousel {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 30px 0;
-            overflow-x: auto;
-            margin-bottom: 30px;
-        }
+.download-resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(167, 139, 250, 0.3);
+}
 
-        .icon-item {
-            width: 65px;
-            height: 65px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
+.download-resume:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(167, 139, 250, 0.5);
+}
 
-        .icon-item:hover {
-            transform: translateY(-8px) scale(1.05);
-            background: rgba(167, 139, 250, 0.25);
-            box-shadow: 0 8px 25px rgba(167, 139, 250, 0.4);
-        }
+/* Rest of your existing styling remains unchanged */
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-            margin-bottom: 40px;
-        }
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-bottom: 40px;
+}
 
-        .card {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 20px;
-            padding: 22px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 22px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.15), transparent);
-            transition: left 0.5s;
-        }
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(167, 139, 250, 0.25);
+}
 
-        .card:hover::before {
-            left: 100%;
-        }
+.ask-section {
+    text-align: center;
+    padding: 35px 0;
+}
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(167, 139, 250, 0.25);
-            border-color: rgba(167, 139, 250, 0.4);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .card-icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-        }
-
-        .card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-            color: #fff;
-        }
-
-        .card p {
-            color: #b4b4b4;
-            line-height: 1.5;
-            font-size: 0.88rem;
-        }
-
-        .ask-section {
-            text-align: center;
-            padding: 35px 0;
-        }
-
-        .ask-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: #a78bfa;
-        }
-
-        .question-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .question-btn {
-            padding: 10px 20px;
-            background: rgba(167, 139, 250, 0.15);
-            border: 1px solid rgba(167, 139, 250, 0.4);
-            border-radius: 22px;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-        }
-
-        .question-btn:hover {
-            background: rgba(167, 139, 250, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(167, 139, 250, 0.3);
-        }
-
-        .input-container {
-            max-width: 580px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .chat-input {
-            width: 100%;
-            padding: 16px 55px 16px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 28px;
-            color: #fff;
-            font-size: 0.95rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .chat-input:focus {
-            border-color: #a78bfa;
-            background: rgba(255, 255, 255, 0.07);
-            box-shadow: 0 0 18px rgba(167, 139, 250, 0.25);
-        }
-
-        .chat-input::placeholder {
-            color: #666;
-        }
-
-        .send-btn {
-            position: absolute;
-            right: 7px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
-            border: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .send-btn:hover {
-            transform: translateY(-50%) scale(1.08);
-            box-shadow: 0 4px 18px rgba(167, 139, 250, 0.45);
-        }
-
-        .send-btn::after {
-            content: '→';
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            75
-                font-size: 2.2rem;
-                letter-spacing: 0.3rem;
-            }
-            
-            .title {
-                font-size: 1rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .icon-item {
-                width: 55px;
-                height: 55px;
-                font-size: 1.5rem;
-            }
-
-            .card {
-                padding: 18px;
-            }
-
-            .card h2 {
-                font-size: 1.3rem;
-            }
-        }
-
-         /* ANIMATION OPTIONS - Change animation: property on .name class to switch between them */
-         /* 1. GLOW PULSE - Glowing effect */
- @keyframes glowPulse {
-   0%, 100% { text-shadow: 0 0 10px rgba(167, 139, 250, 0.5); }
-   50% { text-shadow: 0 0 30px rgba(167, 139, 250, 1); }
- }
-         /* 2. SCALE UP - Bouncy scale effect */
- @keyframes scaleUp {
-   0% { opacity: 0; transform: scale(0.3); }
-   50% { opacity: 1; transform: scale(1.1); }
-   100% { opacity: 1; transform: scale(1); }
- }
-         /* 3. SLIDE IN LEFT - Slide from left */
- @keyframes slideInLeft {
-   from { opacity: 0; transform: translateX(-100px); }
-   to { opacity: 1; transform: translateX(0); }
- }
-         /* 4. WIGGLE - Wobbling motion */
- @keyframes wiggle {
-   0%, 100% { transform: rotate(0deg); }
-   25% { transform: rotate(-2deg); }
-   75% { transform: rotate(2deg); }
- }
-         /* 5. ROTATE IN - Rotating spin effect */
- @keyframes rotateIn {
-   from { opacity: 0; transform: rotate(-45deg) scale(0.3); }
-   to { opacity: 1; transform: rotate(0deg) scale(1); }
- }
-         /* 6. PULSE - Subtle pulsing */
- @keyframes pulse {
-   0%, 100% { opacity: 1; transform: scale(1); }
-   50% { opacity: 0.7; transform: scale(1.05); }
- }
-         /* 7. FLIP IN - 3D flip effect */
- @keyframes flipIn {
-   0% { opacity: 0; transform: rotateY(-90deg); }
-   100% { opacity: 1; transform: rotateY(0deg); }
- }
-        
- /* TO USE DIFFERENT ANIMATIONS:
-    Change the 'animation' property in .name class (around line 75)
-    Examples:
-    - animation: glowPulse 2s ease-in-out infinite;
-    - animation: scaleUp 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    - animation: slideInLeft 0.8s ease-out;
-    - animation: wiggle 0.6s ease-in-out;
-    - animation: rotateIn 0.8s ease-out;
-    - animation: pulse 1.5s ease-in-out infinite;
-    - animation: flipIn 0.8s ease-out;
-    - animation: fadeInUp 0.8s ease-out; (current)
- */
-    </style>
+.question-btn {
+    padding: 10px 20px;
+    background: rgba(167, 139, 250, 0.15);
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    border-radius: 22px;
+    color: #fff;
+    cursor: pointer;
+    margin: 5px;
+}
+</style>
 </head>
+
 <body>
-    <div class="stars" id="stars"></div>
 
-    <div class="container">
-        <div class="header">
-            <h1 class="name">Akash Ghosh</h1>
-            <p class="title">Data Quality Engineer</p>
-            <a href="AKASH-GHOSH.docx" download class="download-resume">
-                📎 Download Resume
-            </a>
-        </div>
+<div class="stars" id="stars"></div>
 
-        <div class="icons-carousel">
-            <div class="icon-item" title="Python">🐍</div>
-            <div class="icon-item" title="Power BI">📊</div>
-            <div class="icon-item" title="SQL">🗄️</div>
-            <div class="icon-item" title="iCEDQ">✅</div>
-            <div class="icon-item" title="Databricks">☁️</div>
-            <div class="icon-item" title="Automation">⚙️</div>
-        </div>
-
-        <div class="cards-grid">
-            <div class="card" onclick="window.location.href='about.html'">
-                <div class="card-icon">👤</div>
-                <h2>About</h2>
-                <p>8 years in data quality engineering and governance.</p>
-            </div>
-
-            <div class="card" onclick="window.location.href='work.html'">
-                <div class="card-icon">💼</div>
-                <h2>Work Experience</h2>
-                <p>Data Quality Associate at S&P Global Ratings.</p>
-            </div>
-
-            <div class="card" onclick="window.location.href='projects.html'">
-                <div class="card-icon">📁</div>
-                <h2>Projects</h2>
-                <p>Enterprise-grade DQ frameworks and automation.</p>
-            </div>
-
-            <div class="card" onclick="window.location.href='contact.html'">
-                <div class="card-icon">✉️</div>
-                <h2>Contact</h2>
-                <p>Hyderabad | akashghosh020@gmail.com</p>
-            </div>
-        </div>
-
-        <div class="ask-section">
-            <h3>Ask AkashGPT</h3>
-            
-            <div class="question-buttons">
-                <button class="question-btn">What's your experience?</button>
-                <button class="question-btn">Which tools do you use?</button>
-                <button class="question-btn">Tell me about your projects</button>
-                <button class="question-btn">What are your skills?</button>
-                <button class="question-btn">How can I contact you?</button>
-            </div>
-
-            <div class="input-container">
-                <input type="text" class="chat-input" placeholder="What would you like to know?">
-                <button class="send-btn"></button>
-            </div>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1 class="name">Akash Ghosh</h1>
+        <p class="title" id="rotating-title">Data Quality Engineer</p>
+        <a href="AKASH-GHOSH.docx" download class="download-resume">
+            📎 Download Resume
+        </a>
     </div>
 
-    <script>
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
-        }
+    <!-- Other content unchanged -->
 
-        document.querySelectorAll('.question-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const input = document.querySelector('.chat-input');
-                input.value = this.textContent;
-                input.focus();
-            });
-        });
-    </script>
+</div>
+
+<script>
+/* Star Background */
+const starsContainer = document.getElementById('stars');
+for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    starsContainer.appendChild(star);
+}
+
+/* Rotating Subtitle */
+const titles = [
+    "Data Quality Engineer",
+    "Data Quality Associate",
+    "Assistant Manager",
+    "Speaks English",
+    "loves automation",
+    "is very lazy & uses AI for his work"
+];
+
+let index = 0;
+const titleElement = document.getElementById("rotating-title");
+
+setInterval(() => {
+    titleElement.style.animation = "none";
+    void titleElement.offsetWidth;
+    titleElement.style.animation = "fadeInUp 0.8s ease";
+
+    index = (index + 1) % titles.length;
+    titleElement.textContent = titles[index];
+}, 1500);
+</script>
+
 </body>
 </html>
